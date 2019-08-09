@@ -7,7 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using ContosoUniversity.Data;
 using Microsoft.EntityFrameworkCore;
 
-// notes in dysktra9 learn about inheritance
+// notes in dysktra10 learn about Advance Scenarios
 // no problem all has been fixed
 namespace ContosoUniversity
 {

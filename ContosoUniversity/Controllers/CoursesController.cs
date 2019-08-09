@@ -173,5 +173,27 @@ namespace ContosoUniversity.Controllers
         {
             return _context.Courses.Any(e => e.CourseID == id);
         }
+
+        // added the update course credit controller this one
+        //is for the administrator if they want to update the entire course credit globally
+        public IActionResult UpdateCourseCredits()
+        {
+            return View();
+        }
+
+        // this is the method that will multiple the entire credit by the desire amount
+        [HttpPost]
+        public async Task<IActionResult> UpdateCourseCredits(int? multiplier)
+        {
+            // if multipler not null it will try to time all the credit by the dire amount that they want.
+            if (multiplier != null)
+            {
+                ViewData["RowsAffected"] =
+                    await _context.Database.ExecuteSqlCommandAsync(
+                        "UPDATE Course SET Credits = Credits * {0}",
+                        parameters: multiplier);
+            }
+            return View();
+        }
     }
 }
